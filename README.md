@@ -24,7 +24,7 @@ var zScore = require( 'compute-zscore' );
 
 Computes the z-scores for elements in `x`. `x` may be either a an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 If `x` is a [`matrix`](https://github.com/dstructs/matrix), then by default z-scores are calculated such that rows of `x` are centered to mean zero and scaled to a standard deviation of one. When `x` is an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), the z-scores are calculated such that they have a mean of zero and a standard deviation of one.
-The function returns an array with three elements: The [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) of z-scores, the mean and the standard deviation of the input array.
+The function returns an array with three elements: The [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) / [`matrix`](https://github.com/dstructs/matrix) of z-scores, the mean and the standard deviation of the input array.
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -174,21 +174,21 @@ var out = zScore( data, {
 	'sep': '|'
 });
 /*  
-{
-	zscores:
-		[
-			{'x':[0,-1.5]},
-			{'x':[1,-1.0]},
-			{'x':[2,-0.5]},
-			{'x':[3,0]},
-			{'x':[4,0]},
-			{'x':[5,0.5]},
-			{'x':[6,1.0]},
-			{'x':[7,1.5]}
-		],
-	mu: 40,
-	sigma: 20
-}
+	{
+		zscores:
+			[
+				{'x':[0,-1.5]},
+				{'x':[1,-1.0]},
+				{'x':[2,-0.5]},
+				{'x':[3,0]},
+				{'x':[4,0]},
+				{'x':[5,0.5]},
+				{'x':[6,1.0]},
+				{'x':[7,1.5]}
+			],
+		mu: 40,
+		sigma: 20
+	}
 */
 
 var bool = ( data === out.zscores );
@@ -207,11 +207,11 @@ out = zScore( data, {
 	'dtype': 'int32'
 });
 /*
-{
-	zscores: Int32Array { '0': -1, '1': 0, '2': 1 },
-	mu: 7,
-	sigma: 4
-}
+	{
+		zscores: Int32Array { '0': -1, '1': 0, '2': 1 },
+		mu: 7,
+		sigma: 4
+	}
 */
 
 // Works for plain arrays, as well...
@@ -219,11 +219,11 @@ out = zScore( [ 3, 7, 11 ], {
 	'dtype': 'uint8'
 });
 /*
-{
-	zscores: Uint8Array { '0': 255, '1': 0, '2': 1 },
-	mu: 7,
-	sigma: 4
-}
+	{
+		zscores: Uint8Array { '0': 255, '1': 0, '2': 1 },
+		mu: 7,
+		sigma: 4
+	}
 */
 ```
 
@@ -242,11 +242,11 @@ out = zScore( data, {
 	'copy': false
 });
 /*
-{
-	zscores: [~-1.091,~0.218,~0.873],
-	mu: ~6.333,
-	sigma: ~3.055
-}
+	{
+		zscores: [~-1.091,~0.218,~0.873],
+		mu: ~6.333,
+		sigma: ~3.055
+	}
 */
 
 bool = ( data === out.zscores );
@@ -387,7 +387,7 @@ $ make view-cov
 
 ## Copyright
 
-Copyright &copy; 2014-2015. The [Compute.io](https://github.com/compute-io) Authors.
+Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 
 [npm-image]: http://img.shields.io/npm/v/compute-zscore.svg
