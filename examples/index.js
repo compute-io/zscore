@@ -6,7 +6,6 @@ var zScore = require( './../lib' ),
 	data,
 	out,
 	mat,
-	tmp,
 	i;
 
 data = randNorm( [25], {
@@ -37,8 +36,8 @@ out = zScore( data, {
 	'accessor': getValue
 });
 console.log( 'Accessors:' );
-console.log( out[ 0 ] );
-console.log( 'Mean: ' + out[ 1 ] + '\tSD: ' + out[ 2 ] );
+console.log( out.zscores );
+console.log( 'Mean: ' + out.mu + '\tSD: ' + out.sigma );
 console.log( '\n' );
 
 // ----
@@ -53,8 +52,8 @@ out = zScore( data, {
 	'sep': '/'
 });
 console.log( 'Deepset:' );
-console.dir( out[ 0 ] );
-console.log( 'Mean: ' + out[ 1 ] + '\tSD: ' + out[ 2 ] );
+console.dir( out.zscores );
+console.log( 'Mean: ' + out.mu + '\tSD: ' + out.sigma );
 console.log( '\n' );
 
 
@@ -67,8 +66,8 @@ data = randNorm( [25], {
 });
 out = zScore( data );
 console.log( 'Typed arrays:' );
-console.log( out[ 0 ] );
-console.log( 'Mean: ' + out[ 1 ] + '\tSD: ' + out[ 2 ] );
+console.log( out.zscores );
+console.log( 'Mean: ' + out.mu + '\tSD: ' + out.sigma );
 console.log( '\n' );
 
 // ----
@@ -76,8 +75,8 @@ console.log( '\n' );
 mat = matrix( data, [5,5], 'int32' );
 out = zScore( mat );
 console.log( 'Matrix:' );
-console.log( out[ 0 ].toString() );
-console.log( 'Mean: ' + out[ 1 ] + '\tSD: ' + out[ 2 ] );
+console.log( out.zscores.toString() );
+console.log( 'Mean: ' + out.mu + '\tSD: ' + out.sigma );
 console.log( '\n' );
 
 // ----
@@ -85,7 +84,7 @@ console.log( '\n' );
 out = zScore( mat, {
 	'dtype': 'uint8'
 });
-console.log( 'Matrix (%s):', out[ 0 ].dtype );
-console.log( out[ 0 ].toString() );
-console.log( 'Mean: ' + out[ 1 ] + '\tSD: ' + out[ 2 ] );
+console.log( 'Matrix (%s):', out.zscores.dtype );
+console.log( out.zscores.toString() );
+console.log( 'Mean: ' + out.mu + '\tSD: ' + out.sigma );
 console.log( '\n' );
